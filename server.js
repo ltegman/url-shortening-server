@@ -58,11 +58,13 @@ app.get(/^\/set\/(.+)/, (req, res) => {
         urls.find({}, {sort: {_id: -1}, limit: 1})
           .success(doc => {
             let nextNum;
-            if (!doc) {
+            if (!doc || doc.length < 1) {
               nextNum = '0';
+            } else {
+              doc = doc[0];
+              nextNum = alphaInc.next('' + doc.shortcut);
             }
-            doc = doc[0];
-            nextNum = alphaInc.next('' + doc.shortcut);
+            
             // insert record and return short url
             urls.insert({shortcut: nextNum, url: normal})
               .success(doc => {
