@@ -40,6 +40,10 @@ Bad Response:
 {error: 'invalid URL'}
 ```
 
+### Try it out
+
+I've got a demo running at [https://protected-stream-2880.herokuapp.com/](http://protected-stream-2880.herokuapp.com/)
+
 ## License
 
 The project is licensed under the terms of the MIT license.

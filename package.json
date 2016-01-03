@@ -5,7 +5,7 @@
   "main": "server.js",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "https://github.com/ltegman/url-shortening-server"
   },
   "author": "Logan Tegman <ltegman@gmail.com>",
   "dependencies": {
