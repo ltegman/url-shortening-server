@@ -1,0 +1,25 @@
+{
+  "name": "url-shortening-server",
+  "version": "0.0.1",
+  "description": "A url shortening service on express and mongo",
+  "main": "server.js",
+  "repository": {
+    "type": "git",
+    "url": ""
+  },
+  "author": "Logan Tegman <ltegman@gmail.com>",
+  "dependencies": {
+    "async": "~0.2.8",
+    "body-parser": "^1.14.2",
+    "express": "~3.2.4",
+    "mongodb": "^2.1.2",
+    "monk": "^1.0.1",
+    "normalize-url": "^1.4.0",
+    "socket.io": "~0.9.14",
+    "validator": "^4.4.0"
+  },
+  "engines": {
+    "node": "4.2.4"
+  },
+  "license": "MIT"
+}
