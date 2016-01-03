@@ -1,7 +1,7 @@
 'use strict';
 
 module.exports = {
-  // This module will increment alphanumeric counters using 0-9 and a-Z 
+  // This module will increment alphanumeric counters using 0-9 and a-Z
   // For example next('a9') => 'aa'
   // return null for invalid input
   next: function next(input) {
@@ -10,8 +10,8 @@ module.exports = {
       57: 97,
       122: 65,
       90: 48
-    }
-    
+    };
+
     // return a starting counter if input is falsey
     if (!input) {
       return '1';
@@ -31,9 +31,9 @@ module.exports = {
       } else {
         nextChar = charCode + 1;
       }
-      
+
       next[i] = String.fromCharCode(nextChar);
-      
+
       // can we return or do we increment the next character as well?
       if (charCode !== 90) {
         return next.join('');
@@ -44,7 +44,7 @@ module.exports = {
       }
     }
   },
-  last: function last(input) {
-    
+  last: function last() {
+    // TODO
   }
 };

@@ -8,7 +8,6 @@ const validator = require('validator');
 const normalizer = require('normalize-url');
 const alphaInc = require('./utils/alphanumeric-increment');
 
-
 /* SCHEMA
 {
   shortcut: 'short',
@@ -34,7 +33,7 @@ app.get('/:short', (req, res) => {
         res.json({error: 'no record found'});
       }
     })
-    .error(err => res.json({error: 'no record found'}));
+    .error(() => res.json({error: 'no record found'}));
 });
 
 app.get(/^\/set\/(.+)/, (req, res) => {
@@ -44,15 +43,17 @@ app.get(/^\/set\/(.+)/, (req, res) => {
     res.json({error: 'invalid URL'});
     return;
   }
-  
-  const normal = normalizer(url); 
-  
+
+  const normal = normalizer(url);
+
   // If this url has already been shortened, return that
   urls.find({url: {$eq: normal}})
     .success(doc => {
       if (doc.length !== 0) {
         doc = doc[0];
-        res.json({shortURL: `${req.protocol}://${req.get('host')}/${doc.shortcut}`});
+        res.json({
+          shortURL: `${req.protocol}://${req.get('host')}/${doc.shortcut}`
+        });
       } else {
         // if valid and not found, make a new shortcut url and return
         urls.find({}, {sort: {_id: -1}, limit: 1})
@@ -64,11 +65,14 @@ app.get(/^\/set\/(.+)/, (req, res) => {
               doc = doc[0];
               nextNum = alphaInc.next('' + doc.shortcut);
             }
-            
+
             // insert record and return short url
             urls.insert({shortcut: nextNum, url: normal})
               .success(doc => {
-                res.json({shortURL: `${req.protocol}://${req.get('host')}/${doc.shortcut}`});
+                res.json({
+                  shortURL:
+                    `${req.protocol}://${req.get('host')}/${doc.shortcut}`
+                });
               })
               .error(err => {
                 res.json({error: err});

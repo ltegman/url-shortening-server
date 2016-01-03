@@ -7,7 +7,14 @@
     "type": "git",
     "url": "https://github.com/ltegman/url-shortening-server"
   },
+  "scripts": {
+    "start": "node server.js"
+  },
   "author": "Logan Tegman <ltegman@gmail.com>",
+  "license": "MIT",
+  "engines": {
+    "node": "4.2.4"
+  },
   "dependencies": {
     "async": "~0.2.8",
     "body-parser": "^1.14.2",
@@ -18,8 +25,9 @@
     "socket.io": "~0.9.14",
     "validator": "^4.4.0"
   },
-  "engines": {
-    "node": "4.2.4"
-  },
-  "license": "MIT"
+  "devDependencies": {
+    "babel-eslint": "^4.1.6",
+    "eslint": "^1.10.3",
+    "eslint-plugin-react": "^3.13.1"
+  }
 }
